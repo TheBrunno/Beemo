@@ -1,3 +1,5 @@
+import sympy
+
 def LeiaInt(msg:str):
     while True:
         valor = input(msg)
@@ -93,15 +95,15 @@ class Calculadora:
 class Beemo(Verificar, Calculadora):
     def __init__(self):
         print("""
-                                                        ██████╗ ███████╗███████╗███╗   ███╗ ██████╗ 
-                                                        ██╔══██╗██╔════╝██╔════╝████╗ ████║██╔═══██╗
-                                                        ██████╔╝█████╗  █████╗  ██╔████╔██║██║   ██║
-                                                        ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╔╝██║██║   ██║
-                                                        ██████╔╝███████╗███████╗██║ ╚═╝ ██║╚██████╔╝
-                                                        ╚═════╝ ╚══════╝╚══════╝╚═╝     ╚═╝ ╚═════╝
+                                            ██████╗ ███████╗███████╗███╗   ███╗ ██████╗ 
+                                            ██╔══██╗██╔════╝██╔════╝████╗ ████║██╔═══██╗
+                                            ██████╔╝█████╗  █████╗  ██╔████╔██║██║   ██║
+                                            ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╔╝██║██║   ██║
+                                            ██████╔╝███████╗███████╗██║ ╚═╝ ██║╚██████╔╝
+                                            ╚═════╝ ╚══════╝╚══════╝╚═╝     ╚═╝ ╚═════╝
             """)
         while True:
-            escolha_init = Menu(['Verificar números', 'Calcular números'], 'Categorias', 2, 0, True)
+            escolha_init = Menu(['Verificar números', 'Calcular números', 'Funções', 'Fatorar Expressoões'], 'Categorias', 4, 0, True)
             if escolha_init == 'Verificar números':
                 while True:
                     escolha = Menu(['Número primo', 'Números negativos/positívos', 'Números pares/ímpares', 'Tabuada de um número', 'Voltar'], 'Verificar Numero', 5, 0, True)
@@ -118,6 +120,15 @@ class Beemo(Verificar, Calculadora):
                         self.Tabuada(number)
             if escolha_init == 'Calcular números':
                 Calculadora.__init__(self)
+            if escolha_init == 'Funções':
+                while True:
+                    escolha = Menu(['Função Afim', 'Função Quadratica', 'Função Exponencial', 'Voltar'], 'Funções', 4, 0, True)
+                    if escolha == 'Voltar':
+                        break
+                    # cenas do proximo capitulo :D
+            if escolha_init == 'Fatorar Expressoões':
+                expre = str(input("Digite a expressão: [EX: x**2 + 2*x*y]"))
+                print(sympy.factor(expre))
 
 if __name__ == "__main__":
     beemo = Beemo()
